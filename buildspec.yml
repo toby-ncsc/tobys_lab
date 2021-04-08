@@ -3,9 +3,13 @@ version: 0.2
 phases:
   install:
     runtime-versions:
+      python: 3.7
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - "cd /usr/bin"
+      - "curl -s -qL -o terraform.zip https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_linux_amd64.zip"
+      - "unzip -o terraform.zip"
+      - echo Buildspec setup complete
   build:
     commands:
       - echo Build started on `date`
